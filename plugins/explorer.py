@@ -3,10 +3,12 @@ import time
 from fnmatch import fnmatch
 
 __info__ = {
-    "help": "自定义目录扫描：支持深度控制、规则过滤与结果导出",
+    "help": "自定义目录扫描",
     "alias": ["tree", "lsr", "find"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 def run_explorer(args, tools):

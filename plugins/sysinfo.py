@@ -4,10 +4,12 @@ import time
 import os
 
 __info__ = {
-    "help": "系统监控：CPU/内存、全分区磁盘、网络流量及实时网速",
+    "help": "系统运行信息监控",
     "alias": ["sys", "info", "status"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": ["psutil"]
 }
 
 def get_size(bytes, suffix="B"):

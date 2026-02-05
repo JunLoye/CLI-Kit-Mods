@@ -1,13 +1,13 @@
 import hashlib
 import base64
-import os
 
-# 模块元数据，供 main.py 自动扫描
 __info__ = {
-    "help": "安全加密与编解码",
+    "help": "字符加密",
     "alias": ["v"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 def setup_args(parser):
@@ -18,7 +18,6 @@ def setup_args(parser):
 def run_vault(args, tools):
     Fore = tools["Fore"]
     
-    # 尝试导入交互库（已在 core/deps.py 中安装）
     try:
         import questionary
     except ImportError:

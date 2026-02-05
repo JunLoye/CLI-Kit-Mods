@@ -6,7 +6,9 @@ __info__ = {
     "help": "沉浸式专注倒计时",
     "alias": ["tick", "timer"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 def setup_args(parser):

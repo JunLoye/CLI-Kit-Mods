@@ -8,7 +8,9 @@ __info__ = {
     "help": "端口扫描",
     "alias": ["scan", "audit"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 PORT_PRESETS = {

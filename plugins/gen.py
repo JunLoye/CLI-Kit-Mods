@@ -6,7 +6,9 @@ __info__ = {
     "help": "随机密码/UUID/文本生成器",
     "alias": ["g"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 def setup_args(parser):

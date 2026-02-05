@@ -1,5 +1,4 @@
 import subprocess
-import os
 import platform
 import shutil
 
@@ -7,7 +6,9 @@ __info__ = {
     "help": "检查 Node, Python, Docker 等版本",
     "alias": ["env", "checkup"],
     "author": "Jun Loye",
-    "license": "MIT"
+    "version": "1.0.0",
+    "license": "MIT",
+    "depends": []
 }
 
 def setup_args(parser):
