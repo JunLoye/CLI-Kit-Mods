@@ -3,7 +3,9 @@ import os
 
 __info__ = {
     "help": "JSON 格式化、美化与校验工具",
-    "alias": ["json", "format"]
+    "alias": ["json", "format"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

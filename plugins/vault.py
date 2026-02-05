@@ -5,7 +5,9 @@ import os
 # 模块元数据，供 main.py 自动扫描
 __info__ = {
     "help": "安全加密与编解码",
-    "alias": ["v"]
+    "alias": ["v"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

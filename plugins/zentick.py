@@ -4,7 +4,9 @@ import os
 
 __info__ = {
     "help": "沉浸式专注倒计时",
-    "alias": ["tick", "timer"]
+    "alias": ["tick", "timer"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

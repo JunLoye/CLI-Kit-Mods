@@ -5,7 +5,9 @@ import shutil
 
 __info__ = {
     "help": "检查 Node, Python, Docker 等版本",
-    "alias": ["env", "checkup"]
+    "alias": ["env", "checkup"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

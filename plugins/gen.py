@@ -4,7 +4,9 @@ import uuid
 
 __info__ = {
     "help": "随机密码/UUID/文本生成器",
-    "alias": ["g"]
+    "alias": ["g"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

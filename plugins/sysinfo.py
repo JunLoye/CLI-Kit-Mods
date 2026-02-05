@@ -5,7 +5,9 @@ import os
 
 __info__ = {
     "help": "系统监控：CPU/内存、全分区磁盘、网络流量及实时网速",
-    "alias": ["sys", "info", "status"]
+    "alias": ["sys", "info", "status"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def get_size(bytes, suffix="B"):

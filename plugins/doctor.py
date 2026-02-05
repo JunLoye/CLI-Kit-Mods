@@ -5,7 +5,9 @@ from concurrent.futures import ThreadPoolExecutor
 
 __info__ = {
     "help": "检查 GitHub、Google、NPM 等开发环境连通性",
-    "alias": ["dr", "netcheck"]
+    "alias": ["dr", "netcheck"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 def setup_args(parser):

@@ -6,7 +6,9 @@ from urllib.request import Request, urlopen
 
 __info__ = {
     "help": "端口扫描",
-    "alias": ["scan", "audit"]
+    "alias": ["scan", "audit"],
+    "author": "Jun Loye",
+    "license": "MIT"
 }
 
 PORT_PRESETS = {
