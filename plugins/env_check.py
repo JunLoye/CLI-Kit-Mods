@@ -4,7 +4,7 @@ import platform
 import shutil
 
 __info__ = {
-    "help": "开发环境体检：一键检查 Node, Python, Docker 等版本",
+    "help": "检查 Node, Python, Docker 等版本",
     "alias": ["env", "checkup"]
 }
 

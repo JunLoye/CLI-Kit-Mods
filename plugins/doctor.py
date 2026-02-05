@@ -4,8 +4,8 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 
 __info__ = {
-    "help": "网络医生：检查 GitHub、Google、NPM 等开发环境连通性",
-    "alias": ["dr", "netcheck"]  # 将这里的 checkup 改为 netcheck，避免与 env_check 冲突
+    "help": "检查 GitHub、Google、NPM 等开发环境连通性",
+    "alias": ["dr", "netcheck"]
 }
 
 def setup_args(parser):
