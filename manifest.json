@@ -1,16 +1,74 @@
 {
-  "version": "1.0.0",
-  "total": 1,
-  "plugins": [
-    {
-      "name": "jsonpad",
-      "file": "plugins/jsonpad.py",
-      "desc": "JSON 格式化、美化与校验工具",
-      "alias": [
-        "json",
-        "format"
-      ],
-      "author": "Community"
-    }
-  ]
+    "plugins": [
+        {
+            "name": "env_check",
+            "file": "plugins/env_check.py",
+            "desc": "检查 Node, Python, Docker 等版本",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "doctor",
+            "file": "plugins/doctor.py",
+            "desc": "检查 GitHub、Google、NPM 等开发环境连通性",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "shortcut",
+            "file": "plugins/shortcut.py",
+            "desc": "快捷方式管理 (一键打开常用网页或目录)",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "jsonpad",
+            "file": "plugins/jsonpad.py",
+            "desc": "JSON 格式化、美化与校验工具",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "zentick",
+            "file": "plugins/zentick.py",
+            "desc": "沉浸式专注倒计时",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "sysinfo",
+            "file": "plugins/sysinfo.py",
+            "desc": "系统监控：CPU/内存、全分区磁盘、网络流量及实时网速",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "vault",
+            "file": "plugins/vault.py",
+            "desc": "安全加密与编解码",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "portscan",
+            "file": "plugins/portscan.py",
+            "desc": "端口扫描",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "gen",
+            "file": "plugins/gen.py",
+            "desc": "随机密码/UUID/文本生成器",
+            "author": "Admin",
+            "license": "MIT"
+        },
+        {
+            "name": "quickserve",
+            "file": "plugins/quickserve.py",
+            "desc": "暂无描述",
+            "author": "Admin",
+            "license": "MIT"
+        }
+    ]
 }
