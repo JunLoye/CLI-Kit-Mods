@@ -1,50 +1,56 @@
 import os
 import json
-import importlib.util
+import ast
 
-def extract_mod_info(file_path, filename):
-    """动态加载模块并提取 __info__"""
-    module_name = filename[:-3]
+def get_plugin_info(file_path):
+    """
+    使用 AST 抽象语法树解析元数据，无需运行代码即可提取 __info__
+    """
     try:
-        spec = importlib.util.spec_from_file_location(module_name, file_path)
-        mod = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(mod)
-        
-        if hasattr(mod, "__info__"):
-            info = mod.__info__
-            return {
-                "name": module_name,
-                "file": f"plugins/{filename}",
-                "desc": info.get("help", "无描述"),
-                "alias": info.get("alias", []),
-                "author": info.get("author", "Community")
-            }
+        with open(file_path, 'r', encoding='utf-8') as f:
+            tree = ast.parse(f.read())
+            for node in tree.body:
+                if isinstance(node, ast.Assign):
+                    for target in node.targets:
+                        if isinstance(target, ast.Name) and target.id == '__info__':
+                            # 转换为 Python 字典对象
+                            return ast.literal_eval(node.value)
     except Exception as e:
-        print(f"⚠️  解析 {filename} 失败: {e}")
-    return None
+        print(f"解析 {file_path} 出错: {e}")
+    return {}
 
-def main():
-    plugins_dir = "plugins"
-    manifest_path = "manifest.json"
+def generate_manifest():
+    # 核心修改：指定插件存放的子目录
+    plugin_dir = "plugins"
+    manifest_name = "manifest.json"
     
-    plugin_list = []
-    if os.path.exists(plugins_dir):
-        for filename in sorted(os.listdir(plugins_dir)):
-            if filename.endswith(".py") and not filename.startswith("__"):
-                info = extract_mod_info(os.path.join(plugins_dir, filename), filename)
-                if info:
-                    plugin_list.append(info)
-
-    manifest_data = {
-        "version": "1.0.0",
-        "total": len(plugin_list),
-        "plugins": plugin_list
-    }
-
-    with open(manifest_path, "w", encoding="utf-8") as f:
-        json.dump(manifest_data, f, ensure_ascii=False, indent=2)
+    plugins_list = []
     
-    print(f"✅ 已成功更新 manifest.json，共 {len(plugin_list)} 个插件。")
+    if not os.path.exists(plugin_dir):
+        print(f"错误: 未找到 {plugin_dir} 目录")
+        return
+
+    # 遍历 plugins 文件夹
+    for filename in os.listdir(plugin_dir):
+        if filename.endswith(".py") and not filename.startswith("__"):
+            file_path = os.path.join(plugin_dir, filename)
+            info = get_plugin_info(file_path)
+            
+            # 提取元数据，若缺失则提供默认值
+            plugins_list.append({
+                "name": filename.replace(".py", ""),
+                "file": f"plugins/{filename}",  # 注意：这里路径包含子目录名
+                "desc": info.get("help", "暂无描述"),
+                "author": info.get("author", "Admin"),
+                "license": info.get("license", "MIT")
+            })
+    
+    # 写入根目录
+    output_data = {"plugins": plugins_list}
+    with open(manifest_name, "w", encoding="utf-8") as f:
+        json.dump(output_data, f, ensure_ascii=False, indent=4)
+    
+    print(f"成功更新 {manifest_name}，共计 {len(plugins_list)} 个插件。")
 
 if __name__ == "__main__":
-    main()
+    generate_manifest()

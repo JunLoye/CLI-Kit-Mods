@@ -1,37 +1,37 @@
-name: Update Plugin Manifest
+name: 自动更新插件清单
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'plugins/**'  # 只有当 plugins 目录下的文件变动时才触发
-  workflow_dispatch:   # 允许手动触发
+      - 'plugins/**'           # 只有 plugins 文件夹下的 py 文件变动才触发
+      - 'generate_manifest.py' # 生成脚本自身变动也触发
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: 检出代码
         uses: actions/checkout@v3
 
-      - name: Set up Python
+      - name: 设置 Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
-        run: |
-          # 如果插件依赖某些库才能加载（比如为了读取元数据），在此安装
-          # 通常简单的元数据读取不需要额外依赖
-          pip install requests
-
-      - name: Generate Manifest
+      - name: 运行生成脚本
         run: python generate_manifest.py
 
-      - name: Commit and Push changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "docs: 🤖 自动化更新 manifest.json [skip ci]"
-          file_pattern: 'manifest.json'
+      - name: 提交并推送到仓库
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add manifest.json
+          # 如果没有文件变动，commit 会报错，这里增加逻辑判断
+          if git diff --staged --quiet; then
+            echo "清单内容未变化，无需更新。"
+          else
+            git commit -m "docs: 自动同步插件清单 [skip ci]"
+            git push
+          fi
