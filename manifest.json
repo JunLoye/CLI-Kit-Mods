@@ -1,5 +1,16 @@
 {
-    "version": "1.0.0",
-    "last_updated": "2026-02-05",
-    "plugins": []
+  "version": "1.0.0",
+  "total": 1,
+  "plugins": [
+    {
+      "name": "jsonpad",
+      "file": "plugins/jsonpad.py",
+      "desc": "JSON 格式化、美化与校验工具",
+      "alias": [
+        "json",
+        "format"
+      ],
+      "author": "Community"
+    }
+  ]
 }
